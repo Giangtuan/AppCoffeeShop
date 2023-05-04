@@ -35,6 +35,7 @@ public class OrderFragment extends BaseFragment {
             mainActivity.setToolBar(true, getString(R.string.order));
     }
 
+
     @Override
     public void onDestroy() {
         super.onDestroy();

@@ -42,4 +42,5 @@ public class HomeFragment extends BaseFragment {
             mHomeViewModel.release();
         }
     }
+
 }

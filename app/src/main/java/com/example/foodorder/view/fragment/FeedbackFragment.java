@@ -32,4 +32,8 @@ public class FeedbackFragment extends BaseFragment {
         if (mainActivity != null)
             mainActivity.setToolBar(true, getString(R.string.feedback));
     }
+
+
 }
+
+
