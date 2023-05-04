@@ -49,18 +49,19 @@ public class SignUpActivity extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(getApplicationContext(),"Vui lòng nhập email",Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
                     return;
                 }
                 if(TextUtils.isEmpty(mk)){
                     Toast.makeText(getApplicationContext(),"Vui lòng nhập mật khẩu",Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
                     return;
                 }
                 if(mk.length() < 6){
                     Toast.makeText(getApplicationContext(), "Mật khẩu quá ngắn, Tối thiểu phải 6 kí tự!", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                     return;
                 }
-
-
                 auth.createUserWithEmailAndPassword(email,mk)
                         .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override

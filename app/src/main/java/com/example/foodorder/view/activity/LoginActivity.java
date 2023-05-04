@@ -60,10 +60,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(Email)){
                     Toast.makeText(getApplicationContext(), "Vui lòng nhập Email!", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                     return;
                 }
                 if (TextUtils.isEmpty(password)) {
                     Toast.makeText(getApplicationContext(), "Vui lòng nhập mật khẩu!", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                     return;
                 }
                 auth.signInWithEmailAndPassword(Email,password)
