@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.foodorder.R;
@@ -17,6 +18,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
     EditText edtEmaildangky,edtMatkhaudk;
@@ -38,16 +42,15 @@ public class SignUpActivity extends AppCompatActivity {
 
         btnDangky =(Button) findViewById(R.id.btndangky);
 
-
         btnDangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = edtEmaildangky.getText().toString().trim();
+                String el = edtEmaildangky.getText().toString().trim();
                 String mk  = edtMatkhaudk.getText().toString().trim();
 
                 progressDialog.show();
 
-                if(TextUtils.isEmpty(email)){
+                if(TextUtils.isEmpty(el)){
                     Toast.makeText(getApplicationContext(),"Vui lòng nhập email",Toast.LENGTH_LONG).show();
                     progressDialog.dismiss();
                     return;
@@ -62,7 +65,7 @@ public class SignUpActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     return;
                 }
-                auth.createUserWithEmailAndPassword(email,mk)
+                auth.createUserWithEmailAndPassword(el,mk)
                         .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -77,6 +80,7 @@ public class SignUpActivity extends AppCompatActivity {
                             }
                         });
             }
+
         });
     }
 }
